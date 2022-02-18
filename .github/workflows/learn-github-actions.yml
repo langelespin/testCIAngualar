@@ -1,11 +1,24 @@
 name: learn-github-actions
-on: [push]
+on:
+  push:
+    branches: [master, dev/*]
+  pull_request:
+    branches: [master, dev/*]
+
 jobs:
-  check-bats-version:
+  build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x]
+
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          node-version: '14'
-      - run: ng test
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run test:prod
+      - run: npm run lint

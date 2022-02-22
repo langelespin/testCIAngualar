@@ -69,18 +69,18 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Deploy package to digitalocean
-      uses: appleboy/ssh-action@master
-      env:
+        uses: appleboy/ssh-action@master
+        env:
           GITHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           GITHUB_TOKEN: ${{ secrets.DOCKER_PASSWORD }}
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        envs: GITHUB_USERNAME, GITHUB_TOKEN
-        script: |
-          docker stop $(docker ps -a -q)
-          docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN
-          docker pull angelpin90/pokeapp:latest
-          docker run -dit -p 80:80 dangelpin90/pokeapp:latest
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          envs: GITHUB_USERNAME, GITHUB_TOKEN
+          script: |
+            docker stop $(docker ps -a -q)
+            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            docker pull angelpin90/pokeapp:latest
+            docker run -dit -p 80:80 dangelpin90/pokeapp:latest

@@ -79,7 +79,7 @@ jobs:
     - name: Publish to Github Packages Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: langelespin/test/appsiir
+        name: langelespin/testCIAngualar/appsiir
         registry: docker.pkg.github.com
         username: ${{ secrets.USERNAME_GITHUB }}
         password: ${{ secrets.TOKEN_GITHUB }}

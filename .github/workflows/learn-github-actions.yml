@@ -81,6 +81,6 @@ jobs:
           envs: GITHUB_USERNAME, GITHUB_TOKEN
           script: |
             docker stop $(docker ps -a -q)
-            docker login registry-1.docker.io -u $GITHUB_USERNAME -p $GITHUB_TOKEN
+            docker login -u $GITHUB_USERNAME -p $GITHUB_TOKEN registry-1.docker.io
             docker pull registry-1.docker.io/angelpin90/pokeapp:latest
             docker run -dit -p 80:80 registry-1.docker.io/angelpin90/pokeapp:latest

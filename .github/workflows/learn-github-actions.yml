@@ -6,31 +6,31 @@ on:
       - main
       
 jobs:
-  web-deploy:
+  # web-deploy:
 
-    name: Deploy Angular App
-    runs-on: ubuntu-latest
+  #   name: Deploy Angular App
+  #   runs-on: ubuntu-latest
 
-    env:
-      SERVER: waws-prod-ln1-025.ftp.azurewebsites.windows.net
+  #   env:
+  #     SERVER: waws-prod-ln1-025.ftp.azurewebsites.windows.net
 
-    steps:
-    - name: Get latest code
-      uses: actions/checkout@v2.3.2
+  #   steps:
+  #   - name: Get latest code
+  #     uses: actions/checkout@v2.3.2
 
-    - name: Use Node.js 14 LTS
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+  #   - name: Use Node.js 14 LTS
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: '14'
       
-    - name: Install NPM Modules
-      run: npm install
+  #   - name: Install NPM Modules
+  #     run: npm install
 
-    - name: Test app
-      run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  #   - name: Test app
+  #     run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
 
-    - name: Build Project
-      run: npm run build
+  #   - name: Build Project
+  #     run: npm run build
   #publicación dockerhub
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -49,7 +49,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
         with:
-          images: my-docker-hub-namespace/my-docker-hub-repository
+          images: appSIIR/appSIIR
 
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc

@@ -100,5 +100,5 @@ jobs:
         script: |
           docker stop $(docker ps -a -q)
           docker login docker.pkg.github.com -u $USERNAME_GITHUB -p $TOKEN_GITHUB
-          docker pull docker.pkg.github.com/langelespin/testCIAngualar/appsiir:latest
-          docker run -dit -p 80:80 docker.pkg.github.com/langelespin/testCIAngualar/appsiir:latest
+          docker pull docker.pkg.github.com/langelespin/testciangualar/appsiir:latest
+          docker run -dit -p 80:80 docker.pkg.github.com/langelespin/testciangualar/appsiir:latest .

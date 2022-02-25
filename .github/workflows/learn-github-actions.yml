@@ -85,7 +85,7 @@ jobs:
         password: ${{ secrets.TOKEN_GITHUB }}
         dockerfile: Dockerfile
         tags: latest
-
+    #deploy aplicacion en vps
     - name: Deploy package to digitalocean
       uses: appleboy/ssh-action@master
       env:

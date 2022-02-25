@@ -15,5 +15,5 @@ RUN npm run build --prod
 
 #Segunda Etapa
 FROM nginx:1.17.1-alpine
-	#Si estas utilizando otra aplicacion cambia PokeApp por el nombre de tu app
+	#darle el nombre y directorio de la aplicacion
 COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html

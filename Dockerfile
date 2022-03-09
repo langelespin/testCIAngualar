@@ -34,6 +34,6 @@ COPY . /app
 RUN npm run build --prod
 
 #Segunda Etapa
-FROM docker.io/library/nginx:latest
+#FROM docker.io/library/nginx:latest
 	#Si estas utilizando otra aplicacion cambia PokeApp por el nombre de tu app
-COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html
+#COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html

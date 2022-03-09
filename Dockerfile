@@ -19,7 +19,7 @@
 #COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html
 
 #Primera Etapa
-FROM  docker.io/library/node:16 as build-step
+FROM  --platform=linux/amd64 docker.io/library/node:16 as build-step
 
 RUN mkdir -p /app
 

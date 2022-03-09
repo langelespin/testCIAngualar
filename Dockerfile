@@ -1,5 +1,25 @@
 #Primera Etapa
-FROM node:14-alpine as build-step
+#FROM node:14-alpine as build-step
+
+#RUN mkdir -p /app
+
+#WORKDIR /app
+
+#COPY package.json /app
+
+#RUN npm install
+
+#COPY . /app
+
+#RUN npm run build --prod
+
+#Segunda Etapa
+#FROM nginx:1.17.1-alpine
+	#darle el nombre y directorio de la aplicacion
+#COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html
+
+#Primera Etapa
+FROM  docker.io/library/node:latest as build-step
 
 RUN mkdir -p /app
 
@@ -14,6 +34,6 @@ COPY . /app
 RUN npm run build --prod
 
 #Segunda Etapa
-FROM nginx:1.17.1-alpine
-	#darle el nombre y directorio de la aplicacion
+FROM docker.io/library/nginx:latest
+	#Si estas utilizando otra aplicacion cambia PokeApp por el nombre de tu app
 COPY --from=build-step /app/dist/appSIIR /usr/share/nginx/html
